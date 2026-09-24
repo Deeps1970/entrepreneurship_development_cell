@@ -1,0 +1,3 @@
+"use client";
+import { useEffect } from "react";
+export function Cursor() { useEffect(() => { if (matchMedia("(pointer: coarse)").matches || matchMedia("(prefers-reduced-motion: reduce)").matches) return; const el = document.querySelector<HTMLElement>(".cursor"); const move = (e: MouseEvent) => { if(el) { el.style.transform = `translate(${e.clientX}px,${e.clientY}px)`; el.classList.toggle("cursor-big", !!(e.target as Element).closest("a,button,.event-card,.initiative")); }}; addEventListener("mousemove", move); return () => removeEventListener("mousemove", move); }, []); return <div className="cursor"/>; }
